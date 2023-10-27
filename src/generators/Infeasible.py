@@ -1,5 +1,5 @@
 from .AbstractDotGenerator import AbstractDotGenerator
-from .colors import RED, GREEN, scale, get_color_between, as_hex
+from .colors import WHITE, GREEN, scale, get_color_between, as_hex
 
 class Infeasible(AbstractDotGenerator):
 
@@ -9,7 +9,8 @@ class Infeasible(AbstractDotGenerator):
         self.min = 0
         self.max = 0
         for entry in data:
-            if entry.sum_of_infeasibilities < 1e20 and self.max < entry.sum_of_infeasibilities: 
+            if entry.sum_of_infeasibilities >= 1e15: continue
+            if self.max < entry.sum_of_infeasibilities: 
                 self.max = entry.sum_of_infeasibilities
 
     def before(self):
@@ -24,7 +25,7 @@ class Infeasible(AbstractDotGenerator):
         if entry.sum_of_infeasibilities >= 1e20: return "white"
 
         score = scale(entry.sum_of_infeasibilities, self.min, self.max)
-        rgb = get_color_between(RED, GREEN, score)
+        rgb = get_color_between(GREEN, WHITE, score)
         
         return as_hex(rgb) 
 

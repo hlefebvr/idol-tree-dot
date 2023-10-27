@@ -6,9 +6,11 @@ class Temporal(AbstractDotGenerator):
     def __init__(self, data): 
         super().__init__(data)
 
-        self.min = 0
+        self.min = 1e50
         self.max = 0
         for entry in data:
+            if self.min > entry.time:
+                self.min = entry.time
             if self.max < entry.time: 
                 self.max = entry.time
 

@@ -16,7 +16,7 @@ class Debug(AbstractDotGenerator):
     def before(self):
         return (
             "   splines=false;\n"
-            "   node [shape=none, style=filled];\n"
+            "   node [shape=none];\n"
             "   edge [dir=none]\n"
             ) 
 
@@ -25,7 +25,7 @@ class Debug(AbstractDotGenerator):
         color = "white"
         
         if entry.event == "1": color = as_hex(get_color_between(WHITE, GREEN, scale(entry.value, self.min, self.max)))
-        elif entry.event == "1": color = "red"
+        elif entry.event == "3": color = "red"
 
         return (f'<table cellspacing="0">'
                 f'<tr><td colspan="2" bgcolor="{color}">{entry.node_id}</td></tr>'

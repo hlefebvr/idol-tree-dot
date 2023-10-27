@@ -1,5 +1,5 @@
 from .AbstractDotGenerator import AbstractDotGenerator
-from .colors import LIGHTBLUE, RED, scale, get_color_between, as_hex
+from .colors import WHITE, RED, scale, get_color_between, as_hex
 
 class Degradation(AbstractDotGenerator):
 
@@ -24,7 +24,7 @@ class Degradation(AbstractDotGenerator):
     def get_node_fillcolor(self, entry):
 
         score = scale(entry.value, self.min, self.max)
-        rgb = get_color_between(LIGHTBLUE, RED, score)
+        rgb = get_color_between(WHITE, RED, score)
         
         return as_hex(rgb) 
 

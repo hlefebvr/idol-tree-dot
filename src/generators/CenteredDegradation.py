@@ -1,5 +1,5 @@
 from .Degradation import Degradation
-from .colors import GREEN, LIGHTBLUE, RED, scale, get_color_between, as_hex
+from .colors import GREEN, WHITE, RED, scale, get_color_between, as_hex
 
 class CenteredDegradation(Degradation):
 
@@ -18,7 +18,7 @@ class CenteredDegradation(Degradation):
 
         if entry.value <= self.best_obj:
             score = scale(entry.value, self.min, self.best_obj)
-            rgb = get_color_between(LIGHTBLUE, GREEN, score)
+            rgb = get_color_between(WHITE, GREEN, score)
             return as_hex(rgb)
         
         score = scale(entry.value, self.best_obj, self.max)
