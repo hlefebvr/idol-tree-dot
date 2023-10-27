@@ -7,6 +7,11 @@ This allows to visualize the exploration tree of a branch-and-bound algorithm af
 
 ### Degradation
 
+This theme adds color to nodes depending on their value.
+
+- From blue to green: relative distance from the root node relaxation to the best feasible point.
+- From green to red: relative distance from the best known feasible point to the worst ever node found.
+
 ![degradation theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/degradation.demo.png)
 
 ### Minimal
