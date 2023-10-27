@@ -2,7 +2,7 @@ import csv
 import argparse
 
 from Entry import Entry
-from generators import Minimal, Temporal
+from generators import Minimal, Temporal, Degradation, CenteredDegradation, Infeasible, Debug
 
 def read_csv_file(path):
 
@@ -21,7 +21,7 @@ def main():
     
     parser.add_argument("--path", required=True, help="Path to the csv file")
     parser.add_argument("--output", help="Output filename")
-    parser.add_argument("--theme", choices=["minimal", "degradation", "centered-degradation", "temporal", "infeasibility", "debug"], help="Optional theme argument")
+    parser.add_argument("--theme", choices=["minimal", "degradation", "centered-degradation", "temporal", "infeasible", "debug"], help="Optional theme argument")
     
     args = parser.parse_args()
 
@@ -29,6 +29,10 @@ def main():
 
     builder = None
     if args.theme == "temporal": builder = Temporal(data)
+    elif args.theme == "degradation": builder = Degradation(data)
+    elif args.theme == "centered-degradation": builder = CenteredDegradation(data)
+    elif args.theme == "infeasible": builder = Infeasible(data)
+    elif args.theme == "debug": builder = Debug(data)
     else: builder = Minimal(data)
 
     output = "branch_and_bound.dot" if args.output is None else args.output

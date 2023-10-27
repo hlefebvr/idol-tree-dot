@@ -5,18 +5,30 @@ This allows to visualize the exploration tree of a branch-and-bound algorithm af
 
 ## Themes
 
+### Debug
+
+![debug theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/debug.demo.png)
+
 ### Degradation
 
-This theme adds color to nodes depending on their value.
+![degradation theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/degradation.demo.png)
 
-- From blue to green: relative distance from the root node relaxation to the best feasible point.
-- From green to red: relative distance from the best known feasible point to the worst ever node found.
 
-![degradation theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/degradation.demo.png)
+### Centered Degradation
+
+![centered degradation theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/centered-degradation.demo.png)
+
+### Infeasible
+
+![minimal theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/infeasible.demo.png)
+
+### Temporal
+
+![temporal theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/temporal.demo.png)
 
 ### Minimal
 
-![minimal theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/minimal.demo.png)
+![minimal theme](https://raw.githubusercontent.com/hlefebvr/idol-tree-dot/main/demos/minimal.demo.png)
 
 ## How to generate the csv file
 

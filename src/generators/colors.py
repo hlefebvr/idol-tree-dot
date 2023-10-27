@@ -2,6 +2,7 @@ WHITE = (255, 255, 255)
 RED   = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE  = (0, 0, 255)
+LIGHTBLUE = (145, 202, 255)
 
 def scale(value, min, max):
     return (value - min) / (max - min + 1e-10)

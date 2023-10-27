@@ -53,7 +53,7 @@ class AbstractDotGenerator(AbstractGenerator):
 
                 edge_args = []
 
-                if edge_label is not None: edge_args += [f'[label="{edge_label}"]']
+                if edge_label is not None: edge_args += [f'label="{edge_label}"']
                 
                 dot_file.write(f"   {entry.parent_id} -> {entry.node_id}")
                 if len(node_args) > 0: dot_file.write("[" + ', '.join(edge_args) + "]")

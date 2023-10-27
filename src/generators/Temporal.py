@@ -26,3 +26,5 @@ class Temporal(AbstractDotGenerator):
         
         return as_hex(rgb) 
 
+    def get_node_shape(self, entry):
+        return "diamond" if entry.event == "3" else None
