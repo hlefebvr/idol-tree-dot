@@ -26,7 +26,7 @@ class Degradation:
     def after(self): return ""
 
     def node_label(self, node_id, parent_id, status, value, branching, event, sum_of_infeasibilities): 
-        return node_id
+        return None
 
     def get_score(self, min, max, value):
         return (value - min) / (max - min + 1e-10)
