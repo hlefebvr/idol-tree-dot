@@ -14,6 +14,8 @@ class Minimal:
 
     def node_label(self, node_id, parent_id, status, value, branching, event, sum_of_infeasibilities): return None
 
+    def node_shape(self, node_id, parent_id, status, value, branching, event, sum_of_infeasibilities): return None
+
     def node_color(self, node_id, parent_id, status, value, branching, event, sum_of_infeasibilities): return None
 
     def edge_label(self, node_id, parent_id, status, value, branching, event, sum_of_infeasibilities): return None

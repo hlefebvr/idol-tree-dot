@@ -8,7 +8,7 @@ class Info:
         return node_id
 
     def edge_label(node_id, parent_id, status, value, branching, event, sum_of_infeasibilities):
-        return ""
+        return None
 
 # 
 #            color = "white"

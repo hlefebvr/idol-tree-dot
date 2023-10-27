@@ -32,9 +32,6 @@ def generate_dot(input_data, dot_filename, theme):
         if before is not None:
             dot_file.write(before)
 
-        #dot_file.write("  edge [fontsize=\"10px\"];\n")
-        #dot_file.write("  node [shape=none];\n")
-
         for row in input_data:
 
             node_id, parent_id, status, value, branching, event, sum_of_infeasibilities = row

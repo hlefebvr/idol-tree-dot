@@ -2,3 +2,4 @@
 *.png
 *.svg
 __pycache__
+!*.demo.png
