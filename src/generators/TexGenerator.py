@@ -17,8 +17,8 @@ class TexGenerator(AbstractGenerator):
 
         for entry in data:
 
-            if entry.sum_of_infeasibilities >= 1e15: continue
-            if entry.value >= 1e15: continue
+            if entry.sum_of_infeasibilities >= 1e20: continue
+            if entry.value >= 1e20: continue
 
             if self.max_infeas < entry.sum_of_infeasibilities: 
                 self.max_infeas = entry.sum_of_infeasibilities
@@ -32,10 +32,15 @@ class TexGenerator(AbstractGenerator):
 
         if self.best_node is None:
             raise Exception("Cannot make plot if no feasible point has been found.")
+        
+        self.max_y = (self.max_obj - self.min_obj) / (self.best_obj - self.min_obj)
+        self.max_x = 1
 
     def get_point(self, entry):
-        y = (entry.value - self.min_obj) / (self.max_obj - self.min_obj) * self.scaling_factor
-        x = (entry.sum_of_infeasibilities - self.min_infeas) / (self.max_infeas - self.min_infeas) * self.scaling_factor
+        
+        y = (entry.value - self.min_obj) / (self.best_obj - self.min_obj)
+        x = (entry.sum_of_infeasibilities - self.min_infeas) / (self.max_infeas - self.min_infeas) * self.max_y / self.max_x
+
         return (x, y)
 
     def build(self, filename):
@@ -60,7 +65,7 @@ class TexGenerator(AbstractGenerator):
         for entry in self.data:
             if entry.level < 0: 
                 continue
-            if entry.sum_of_infeasibilities >= 1e15: 
+            if entry.sum_of_infeasibilities >= 1e20 or entry.value >= 1e20: 
                 out[entry.node_id] = None
                 continue
             point = self.get_point(entry)
@@ -69,12 +74,14 @@ class TexGenerator(AbstractGenerator):
         for entry in self.data:
             if entry.node_id == 0: continue
             if entry.level < 0: continue
-            if entry.node_id in out: continue
+            if entry.node_id in out or entry.parent_id in out: continue
             tikz_code += "\\draw (node" + str(entry.parent_id) + ") -- (node" + str(entry.node_id) + ");\n"
 
-        tikz_code += "\\draw[<->] (0, 11) |- (11, 0);\n"
+        tikz_code += "\\draw[<->, thick] (0, " + str(self.max_y + 1) + ") node[above] {\\textit{Degradation}} |- (" + str(self.max_y + 1) + ", 0) node[below] {\\textit{Sum of infeasibilities}};\n"
 
-        tikz_code += "\\draw[white] (-1, 12) |- (12, -1);\n"
+        tikz_code += "\\draw[white] (-1, " + str(self.max_y + 2) + ") |- (" + str(self.max_y + 2) + ", -1);\n"
+
+        tikz_code += "\\draw[dashed, gray] (0, 1) |- (" + str(self.max_y) + ", 1) node[right] {\\textit{opt.}};\n"
 
         tikz_code += "\\node[below] at (node0) {C};\n"
         tikz_code += "\\node[left] at (node" + str(self.best_node) + ") {I};\n"
