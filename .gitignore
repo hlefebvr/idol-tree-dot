@@ -3,3 +3,5 @@
 *.svg
 __pycache__
 !*.demo.png
+*.tex
+dev

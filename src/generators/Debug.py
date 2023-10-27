@@ -9,7 +9,7 @@ class Debug(AbstractDotGenerator):
         self.min = -1e20
         self.max = +1e20
         for entry in data:
-            if entry.event != "3": continue 
+            if entry.event != "1": continue 
             if self.max < entry.value: self.max = entry.value
             if self.min > entry.value: self.min = entry.value
 
@@ -24,7 +24,7 @@ class Debug(AbstractDotGenerator):
         
         color = "white"
         
-        if entry.event == "3": color = as_hex(get_color_between(WHITE, GREEN, scale(entry.value, self.min, self.max)))
+        if entry.event == "1": color = as_hex(get_color_between(WHITE, GREEN, scale(entry.value, self.min, self.max)))
         elif entry.event == "1": color = "red"
 
         return (f'<table cellspacing="0">'
