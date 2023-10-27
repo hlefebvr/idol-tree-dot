@@ -1,6 +1,7 @@
-# A visualizer for idol branch-and-bound trees
+# A Viewer for idol Branch-And-Bound Trees
 
-This is a python script to convert csv exports made by the [idol](https://github.com/hlefebvr/idol) to `.dot` files. 
+This is a python script to convert `csv` exports of the [idol C++ library](https://github.com/hlefebvr/idol) into `.dot` files.
+This allows to visualize the exploration tree of a branch-and-bound algorithm after its execution.
 
 ## Themes
 
@@ -27,4 +28,10 @@ model.use(
                 .with_log_level(Info, Blue)
                 .with_log_frequency(1)
 );
+```
+
+## How to use
+
+```shell
+python3 src/main.py --path path/to/csv/file [--theme degradation] [--output custom_filename.dot]
 ```
