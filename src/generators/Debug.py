@@ -33,4 +33,6 @@ class Debug(AbstractDotGenerator):
                 f'</table>')
         
     def get_edge_label(self, entry):
+        if len(entry.branching) > 20:
+            return entry.branching[:20] + "..."
         return entry.branching
